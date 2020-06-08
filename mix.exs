@@ -39,7 +39,9 @@ defmodule GraphBanking.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:absinthe_ecto, "~> 0.1.0"},
-      {:absinthe_plug, "~> 1.3.0"},
+      {:absinthe_plug, "~> 1.4.0"},
+      {:poison, "~> 3.1"},
+      {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 1.0"}
     ]
   end
