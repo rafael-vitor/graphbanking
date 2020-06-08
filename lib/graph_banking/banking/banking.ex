@@ -38,6 +38,22 @@ defmodule GraphBanking.Banking do
   def get_account!(id), do: Repo.get!(Account, id)
 
   @doc """
+  Gets a single account returing nil if it does not exist
+
+  ## Examples
+
+      iex> get_account!(123)
+      %Account{}
+
+      iex> get_account!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def find_account(id) do
+    Repo.get(Account, id)
+  end
+
+  @doc """
   Creates a account.
 
   ## Examples
@@ -115,6 +131,10 @@ defmodule GraphBanking.Banking do
   """
   def list_transactions do
     Repo.all(Transaction)
+  end
+
+  def list_transactions_by_sender_id(id) do
+    Repo.all(from t in Transaction, where: t.sender == ^id)
   end
 
   @doc """
