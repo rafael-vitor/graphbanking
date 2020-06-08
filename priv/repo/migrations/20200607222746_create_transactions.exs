@@ -3,9 +3,9 @@ defmodule GraphBanking.Repo.Migrations.CreateTransactions do
 
   def change do
     create table(:transactions) do
-      add :address, :uuid
+      add :address, :integer
       add :amount, :float
-      add :sender, :uuid
+      add :sender, :integer
       add :when, :naive_datetime
 
       timestamps()

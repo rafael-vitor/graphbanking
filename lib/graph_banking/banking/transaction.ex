@@ -4,9 +4,9 @@ defmodule GraphBanking.Banking.Transaction do
 
 
   schema "transactions" do
-    field :address, Ecto.UUID
+    field :address, :integer
     field :amount, :float
-    field :sender, Ecto.UUID
+    field :sender, :integer
     field :when, :naive_datetime
 
     timestamps()
@@ -15,7 +15,8 @@ defmodule GraphBanking.Banking.Transaction do
   @doc false
   def changeset(transaction, attrs) do
     transaction
-    |> cast(attrs, [:address, :amount, :sender, :when])
-    |> validate_required([:address, :amount, :sender, :when])
+    |> Map.put(:when, DateTime.utc_now)
+    |> cast(attrs, [:address, :amount, :sender])
+    |> validate_required([:address, :amount, :sender])
   end
 end
